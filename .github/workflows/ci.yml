@@ -1,0 +1,14 @@
+name: CI/CD Pipeline
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+env:
+    OWNER: "theapacks"
+jobs:
+    build-test-lint:
+        uses: theapacks/awssox/.github/workflows/tests.yml@main
