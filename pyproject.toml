@@ -1,0 +1,48 @@
+[project]
+name = "awssox"
+version = "0.1.0"
+description = "An interactive CLI tool to simplify AWS SSO logins"
+authors = [{ name = "Mbulaheni Davhana" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["typer (>=0.15.2,<0.16.0)", "questionary (>=2.1.0,<3.0.0)"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+pytest = "^8.3.5"
+pytest-cov = "^6.0.0"
+isort = "^6.0.1"
+mypy = "^1.15.0"
+ruff = "^0.11.2"
+pre-commit = "^4.2.0"
+python-semantic-release = "^9.21.0"
+twine = "^6.1.0"
+
+[tool.poetry.scripts]
+awssox = "awssox.awssox:cli"
+
+[tool.ruff]
+line-length = 88
+select = ["A", "B", "C", "D", "E", "F", "I", "N", "Q", "S", "T", "W"]
+ignore = ["S101"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+
+[tool.semantic_release]
+version_variable = "pyproject.toml:version"
+version_source = "commit"
+upload_to_pypi = true
+upload_to_release = true
+commit_version_number = true
+commit_message = "chore(release): release v{version} [skip ci]"
+repository = "pypi"
+branch = "main"
+changelog_file = "CHANGELOG.md"
+build_command = "poetry build"
